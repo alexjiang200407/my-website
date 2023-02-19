@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ButtonProps } from "./filledbutton";
 import MyButton from "./filledbutton";
 
 

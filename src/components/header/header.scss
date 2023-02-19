@@ -1,0 +1,33 @@
+@use "../../index";
+// Signature font
+@font-face {
+    font-family: Signature;
+    src: url("../../fonts/Thesignature.ttf");
+}
+
+#logo
+{
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    color: black;
+    text-decoration: none;
+
+    // Hide if phone
+    @media (max-width: map-get(index.$screen-width, "tablet"))
+    {
+        display: none;
+    }
+}
+
+#signature
+{
+    font-family: Signature;
+    font-size: 50px;
+}
+
+#logo:hover
+{
+    opacity: 0.1;
+}
+

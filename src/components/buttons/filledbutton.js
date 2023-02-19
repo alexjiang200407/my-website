@@ -14,7 +14,8 @@ export default class MyButton extends React.Component
                 placement = { this.props.tooltipPos }
             >
                 <Button
-                    color="primary"
+                    role="button"
+                    color= { this.props.color }
                     size = { this.props.size }
                     variant="contained"
                     aria-label = { this.props.ariaLabel }
@@ -31,6 +32,7 @@ export default class MyButton extends React.Component
 // Default Values
 MyButton.defaultProps = {
     tooltip: "Tooltip",
+    color: "primary",
     tooltipPos: "bottom",
     ariaLabel: "button",
     size: "small",

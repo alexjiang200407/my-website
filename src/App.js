@@ -1,18 +1,30 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Quote from "./components/quote/quote";
 import myTheme from "./components/theme";
 import { ThemeProvider } from "@emotion/react";
+import Header from "./components/header/header";
 
-export default function App()
+export default class App extends React.Component
 {
-    return (
+    render() {
+        return (
+            <div
+                id="app"        
+            >
+                <ThemeProvider theme={ myTheme }>
+                    <BrowserRouter>
+                        <Header />
+                        <Routes>
+                            <Route 
+                                element = {<Quote />}
+                                path = "/"
+                            />
+                        </Routes>
+                    </BrowserRouter>
+                </ThemeProvider> 
 
-        <div
-            id="app"        
-        >
-            <ThemeProvider theme={ myTheme }>
-                <Quote />
-            </ThemeProvider>            
-        </div>
-    )
-}
+            </div>
+        );
+    };
+};

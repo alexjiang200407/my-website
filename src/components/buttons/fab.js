@@ -16,6 +16,8 @@ export default class MyFab extends MyButton
                 placement = { this.props.tooltipPos }
             >
                 <Fab
+                    role = "button"
+                    color = { this.props.color } 
                     size = { this.props.size }
                     aria-label = { this.props.ariaLabel }
                     onClick = { this.props.onClick.bind(this) }
@@ -23,7 +25,6 @@ export default class MyFab extends MyButton
                     { this.props.children }
                 </Fab>
             </Tooltip>
-    
         );
     };
 

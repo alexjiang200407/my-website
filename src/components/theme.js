@@ -4,12 +4,22 @@ import { createTheme } from "@mui/material/styles"
 const myTheme = createTheme({
     palette: {
         primary: {
-            main: "#eab676"
+            main: "#e85a4f"
         },
         secondary: {
-            main: "#ffffff"
+            main: "#e98074"
         },
-        whitespace: "#3a3736"
+        whitespace: {
+            main: "#eae7dc"
+        }
+    },
+    typography: {
+        fontFamily: [
+            '"Segoe UI"',
+            "Roboto",
+            "sans-serif"
+        ].join(","),
+        fontSize: 12
     }
 });
 

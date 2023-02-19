@@ -14,6 +14,7 @@ export default class FilledButton extends React.Component<ButtonProps>
 export interface ButtonProps
 {
     tooltip?: string
+    color?: "primary" | "secondary"
     size?: "small" | "medium" | "large"
     tooltipPos?: "top" | "left" | "bottom" | "right"
     ariaLabel?: string
