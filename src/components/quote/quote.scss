@@ -1,0 +1,27 @@
+@use "../../index";
+
+#quote
+{
+    background-color: map-get(index.$color-scheme , "secondary");
+    padding: 0.8rem;
+    width: 30%;
+}
+
+#quote-content blockquote
+{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#quote-content
+{
+    gap: 0.5rem;
+}
+
+#quote .divider
+{
+    width: 12rem;
+    padding: 1rem 0;
+}
+

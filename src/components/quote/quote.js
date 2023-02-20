@@ -1,39 +1,36 @@
 import React from "react"
 import MyFab from "../buttons/fab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAddressBook } from "@fortawesome/free-regular-svg-icons"
-import MyButton from "../buttons/filledbutton";
 import WebPage from "../base_page/webpage";
+import "./quote.scss";
+import lineDivider from "../../images/line_divider.svg"
 
 
 export default class Quote extends WebPage
 {
-    constructor(props)
-    {
-        super(props);
-    };
-
     componentDidMount()
     {
+        setTimeout(
+            () => {
+                this.setState({finishedLoading: true});
+            },
+            500
+        );
     };
 
     page()
     {
         return (
-            <div id="quote">
-                <MyFab 
-                    tooltip = "Cunt"
-                    tooltipPos = "right"
-                    onClick = {(e) => {console.log(e.currentTarget);}}
-                    ariaLabel = "hello"
-                >
-                    <FontAwesomeIcon icon = { faAddressBook } />
-                </MyFab>
-                <MyButton
-                    tooltipPos="left"
-                >
-                    Fuck Me
-                </MyButton>
+            <div id="quote" className="center-horizontal">
+                <h3>Quote</h3>
+                <img className="divider" src={lineDivider}></img>
+                <div id="quote-content" className="center-horizontal">
+                    <blockquote>
+                        A man’s true wealth is the good he does in the world.       
+                    </blockquote>
+                    <div id="author">Kahlil Gibran</div>
+                </div>
+
             </div>
         );
     };

@@ -16,12 +16,9 @@ export default class WebPage extends React.Component
     loadingScreen()
     {
         return (
-            <div id="loading-screen">
-                <h1>Loading
-                    <div class="dots"><span class="dot z"></span><span class="dot f"></span><span class="dot s"></span><span class="dot t"><span class="dot l"></span></span></div>
-                </h1>
-            </div>
-
+            <main id="loading-screen">
+                <div id="loader"></div>
+            </main>
         );
     };
 
@@ -33,13 +30,15 @@ export default class WebPage extends React.Component
     {
         if (this.state.finishedLoading)
         {
-            console.log("shit")
-            return this.page();
+            return (
+                <main className="webpage">
+                    { this.page() }   
+                </main>
+            );
         }
         else
         {
             return this.loadingScreen();
         };
     };
-
 };

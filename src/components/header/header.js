@@ -2,7 +2,6 @@ import React from "react";
 import { AppBar, Toolbar, Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import "./header.scss"
 import LinkList from "../link_list/link_list";
@@ -14,11 +13,10 @@ export default class Header extends React.Component
     {
         return (
             <AppBar
-                position="sticky"
+                position="static"
                 color="whitespace"
                 sx={{
                     boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-                    marginBottom: "1rem",
                 }}
             >          
                 <Toolbar>            
