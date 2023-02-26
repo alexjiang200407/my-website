@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Quote from "./components/quote/quote";
 import myTheme from "./components/theme";
 import { ThemeProvider } from "@emotion/react";
 import Header from "./components/header/header";
+import Home from "./components/home/home";
+import VintageBackground from "./components/background/vintage_background";
 
 export default class App extends React.Component
 {
@@ -15,9 +16,12 @@ export default class App extends React.Component
                 <ThemeProvider theme={ myTheme }>
                     <BrowserRouter>
                         <Header />
+
+                        <VintageBackground />
+
                         <Routes>
                             <Route 
-                                element = {<Quote />}
+                                element = {<Home />}
                                 path = "/"
                             />
                         </Routes>

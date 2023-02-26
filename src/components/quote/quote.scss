@@ -2,9 +2,8 @@
 
 #quote
 {
-    background-color: map-get(index.$color-scheme , "secondary");
     padding: 0.8rem;
-    width: 30%;
+    visibility: hidden;
 }
 
 #quote-content blockquote
@@ -23,5 +22,6 @@
 {
     width: 12rem;
     padding: 1rem 0;
+    user-select: none;
 }
 

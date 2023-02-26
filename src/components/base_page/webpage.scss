@@ -4,13 +4,16 @@
 
 #loading-screen
 {
+  position: fixed;
+  top: calc(50% - 68px);
+  left: calc(50% - 68px);
   animation: animations.$fade-in;
 }
 
 #loader 
 {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid map-get(index.$color-scheme, "primary");
+  border-top: 16px solid index.$primary;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -19,6 +22,7 @@
 
 main
 {
+  width: 100%;
 }
 
 .webpage > *

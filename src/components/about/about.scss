@@ -1,0 +1,13 @@
+@use "../../index";
+#about
+{
+    height: 55rem;
+    margin: 0 2rem;
+    position: relative;
+    top: 20rem;
+}
+
+#about-image-1
+{
+    box-shadow: 0 0 8px 8px index.$white-space inset;
+}

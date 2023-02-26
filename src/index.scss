@@ -1,4 +1,4 @@
-
+@use "./animations";
 // Screen Width for responsive as fuck design
 $screen-width: (
     "phone": 400px,
@@ -9,22 +9,26 @@ $screen-width: (
     "4k": 3840px
 ) !default;
 
-// The fucking colors m8
-$color-scheme: (
-    "primary": #e85a4f,
-    "secondary": #e98074,
-    "white-space": #eae7dc,
-    "white-space-alt": #d3d3d3,
-    "light-green": #8fbc8f,
-    "grey": #444444
-);
+$primary: 	#cec9c9;
+$secondary: #e98074;
+$white-space: #0b0b0d;
+$text-color: #fff;
+
+:export {
+    primary: $primary;
+    textColor:  $text-color;
+    secondary: $secondary;
+    whitespace: $white-space;
+}
 
 html
 {
     padding: 0;
     margin: 0;
+    width: 100%;
+    line-height: 1.5;
     font-family: 'Segoe UI', 'Roboto', sans-serif;
-    color: black;
+    color: $text-color;
     font-size: 20px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -33,21 +37,21 @@ html
 
 body
 {
+    width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 0;
+    background-color: $white-space;
     margin: 0;
 }
 
 #app
 {
     width: 100%;
-    height: 100vh;
-    background-color: map-get($color-scheme, "white-space-alt");
-    width: 100%;
-    height: 200vh;
 }
 
+
+/* || CSS LAYOUTS || */
 .center-horizontal
 {
     display: flex;
@@ -57,10 +61,35 @@ body
 }
 
 
+// Flex that positions items horizontally for desktop and vertically for mobile
+.responsive-flex
+{
+    display: flex;
+
+    @media (max-width: map-get($screen-width, "tablet")) {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: map-get($screen-width, "tablet")) {
+    #root .responsive-flex > *
+    {
+        width: fit-content;
+    }
+}
+
+
+/* || BASIC SHIT || */
+h1
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
 h3
 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
-    text-transform: uppercase;
     margin: 0;
 }
+

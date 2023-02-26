@@ -1,0 +1,28 @@
+@use "../../index.scss";
+
+.button-container
+{
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: right;
+    margin: 1rem 0;
+}
+
+.button-container.align-left
+{
+    justify-content: left;
+}
+
+.button-container.align-center
+{
+    justify-content: center;
+}
+
+.custom-fab
+{
+    color: index.$white-space;
+    font-size: 1rem;
+
+}
+

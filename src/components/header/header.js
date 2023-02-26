@@ -2,7 +2,6 @@ import React from "react";
 import { AppBar, Toolbar, Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
-
 import "./header.scss"
 import LinkList from "../link_list/link_list";
 import { NavLink } from "react-router-dom";
@@ -16,14 +15,16 @@ export default class Header extends React.Component
                 position="static"
                 color="whitespace"
                 sx={{
-                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                    zIndex: 1,
+                    boxShadow: "0",
+                    padding: "0.3rem"
                 }}
             >          
                 <Toolbar>            
                     <IconButton
                             id="menu"
                             size="medium"
-                            color="inherit"
+                            color="text"
                             edge="start"
                             aria-label="open-drawer"
                             sx={{ mr: 2 }}
@@ -51,8 +52,8 @@ export default class Header extends React.Component
                     <LinkList 
                         links = {[
                             {
-                                title: "About Me",
-                                to: "/about"
+                                title: "Resume",
+                                to: "/resume"
                             }
                         ]}
                     />

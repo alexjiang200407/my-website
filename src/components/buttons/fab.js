@@ -3,7 +3,7 @@ import { Fab } from "@mui/material"
 import { Tooltip } from "@mui/material"
 import MyButton from "./filledbutton";
 
-
+import "./buttons.scss"
 
 export default class MyFab extends MyButton
 {
@@ -16,6 +16,7 @@ export default class MyFab extends MyButton
                 placement = { this.props.tooltipPos }
             >
                 <Fab
+                    className="custom-fab"
                     role = "button"
                     color = { this.props.color } 
                     size = { this.props.size }
