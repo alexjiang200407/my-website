@@ -1,5 +1,4 @@
 import "./about.scss"
-import bike from "../../images/ozu_1.png"
 
 
 export default function About()

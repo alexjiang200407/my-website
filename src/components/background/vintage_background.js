@@ -1,6 +1,7 @@
 import React, { createRef } from "react"
 import "./vintage_background.scss";
 import dust from "../../images/dust_2.png";
+import lines from "../../images/lines.webp"
 import Bencher from "../../scripts/bencher/bencher";
 
 export default class VintageBackground extends React.Component
@@ -18,6 +19,8 @@ export default class VintageBackground extends React.Component
     #columnHeight = 0;
     #dustOverlay;
     #dustPattern;
+    #lineOverlay;
+    #linePattern;
     #bencher = new Bencher(100, "DrawScratches()");
     
 
@@ -33,6 +36,7 @@ export default class VintageBackground extends React.Component
         super(props)
         this.#canvasRef = createRef(null);
         this.#dustOverlay = createRef(null);
+        this.#lineOverlay = createRef(null);
     }
 
     // Clears the fucking background
@@ -66,11 +70,12 @@ export default class VintageBackground extends React.Component
     // Draws a set amount of scratches to the screen every frame
     #DrawScratches()
     {
-
         // Initialises array that holds remaining rows
         let index = 0;
         let remainingRows = Array(VintageBackground.rows).fill().map(() => index++)
         
+
+        this.#ctx.fillStyle = this.#dustPattern;
         // Initialises array that holds the columns of each row
         let tiles = Array(VintageBackground.rows).fill().map(
             () => {
@@ -104,14 +109,45 @@ export default class VintageBackground extends React.Component
 
     }
 
+    #DrawLines()
+    {
+        let xPos = this.#RandomNum(0, this.screenWidth);
+        if ((xPos % 4) == 1)
+        {
+            this.#ctx.drawImage(this.#lineOverlay.current, xPos, 0)
+        };
+    }
+
     // Does this shit every frame
     #DoFrame()
     {
         this.#bencher.Start();
         this.Clear();
         this.#DrawScratches();
+        this.#DrawLines();
         this.#bencher.End();
     };
+
+
+    #LoadImages()
+    {
+        // Load image 1
+        return new Promise((resolve, reject) => {
+            this.#dustOverlay.current.addEventListener("load", () => {
+                this.#dustPattern = this.#ctx.createPattern(this.#dustOverlay.current, "repeat");
+                resolve();
+            })
+        })
+        // Load image 2
+        .then(
+            new Promise((resolve, reject) => {
+                this.#lineOverlay.current.addEventListener("load", () => {
+                    resolve();
+                })
+            })  
+        );
+
+    }
 
     componentDidMount()
     {
@@ -125,19 +161,17 @@ export default class VintageBackground extends React.Component
         this.#rowWidth = Math.floor(this.screenWidth / VintageBackground.rows);
         this.#columnHeight = Math.floor(this.screenHeight / VintageBackground.columns);
 
-        
-        this.#dustOverlay.current.addEventListener("load", () => {
-            this.#dustPattern = this.#ctx.createPattern(this.#dustOverlay.current, "repeat");
-            this.#ctx.fillStyle = this.#dustPattern;
-
-            setInterval(
-                this.#DoFrame.bind(this),
-                this.frameTime
-            );
-        })
-
-
-    }
+        // Load images then start painting the screen
+        this.#LoadImages()
+        .then(
+            () => {
+                setInterval(
+                    this.#DoFrame.bind(this),
+                    this.frameTime
+                );
+            }
+        );
+    };
 
 
 
@@ -157,6 +191,7 @@ export default class VintageBackground extends React.Component
                 <div className="outer-scratch"></div>
                 <div className="inner-scratch"></div>
                 <div style={{ display: "none" }}>
+                    <img src = { lines } ref={ this.#lineOverlay }></img>
                     <img src = { dust } ref={ this.#dustOverlay }></img>
                 </div>
             </div>

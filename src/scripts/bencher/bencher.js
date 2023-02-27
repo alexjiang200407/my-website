@@ -41,7 +41,7 @@ export default class Bencher
     {
         if (!this.#finished && Bencher.#enabled)
         {
-            if (this.#count++ > this.#samples)
+            if (++this.#count >= this.#samples)
             {
                 this.#finished = true;
                 console.log(`Finished benchmarking ${this.#algorithm}: Average time over ${this.#samples} samples is ${this.#timesSum / this.#samples}ms.`);
@@ -55,6 +55,6 @@ export default class Bencher
                 return -1.0;
             }
         }
-
+        return -1.0;
     }
 }
