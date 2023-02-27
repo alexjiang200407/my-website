@@ -112,9 +112,11 @@ export default class VintageBackground extends React.Component
     #DrawLines()
     {
         let xPos = this.#RandomNum(0, this.screenWidth);
+        this.#ctx.fillStyle = this.#linePattern;
         if ((xPos % 4) == 1)
         {
-            this.#ctx.drawImage(this.#lineOverlay.current, xPos, 0)
+            console.log("Draw");
+            this.#ctx.fillRect(xPos, 0, this.#rowWidth, this.#columnHeight);
         };
     }
 
@@ -124,7 +126,7 @@ export default class VintageBackground extends React.Component
         this.#bencher.Start();
         this.Clear();
         this.#DrawScratches();
-        this.#DrawLines();
+        // this.#DrawLines();
         this.#bencher.End();
     };
 
@@ -142,6 +144,7 @@ export default class VintageBackground extends React.Component
         .then(
             new Promise((resolve, reject) => {
                 this.#lineOverlay.current.addEventListener("load", () => {
+                    this.#dustPattern = this.#ctx.createPattern(this.#lineOverlay.current, "repeat");
                     resolve();
                 })
             })  
