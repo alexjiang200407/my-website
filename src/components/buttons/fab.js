@@ -14,6 +14,9 @@ export default class MyFab extends MyButton
             <Tooltip
                 title = { this.props.tooltip }
                 placement = { this.props.tooltipPos }
+                sx={{
+                    fontSize: "1rem",
+                }}
             >
                 <Fab
                     className="custom-fab"
@@ -30,5 +33,3 @@ export default class MyFab extends MyButton
     };
 
 };
-
-// Inherits default props from MyButton

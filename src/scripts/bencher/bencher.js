@@ -47,7 +47,7 @@ export default class Bencher
                 console.log(`Finished benchmarking ${this.#algorithm}: Average time over ${this.#samples} samples is ${this.#timesSum / this.#samples}ms.`);
                 return this.#timesSum / this.#samples;
             }
-            else if(this.#count !== 1)
+            else if(this.#count !== 1 || this.#samples == 1)
             {
                 let elapsed = performance.now() - this.#timer;  
 

@@ -6,27 +6,53 @@ import { faTwitter, faWikipediaW } from "@fortawesome/fontawesome-free-brands"
 import "./quote.scss";
 import lineDivider from "../../images/line_divider.svg"
 import ButtonContainer from "../buttons/buttonContainer";
+import WebPage from "../base_page/webpage";
 
 
-export default class Quote extends React.Component
+export default class Quote extends WebPage
 {
 
+    constructor(props)
+    {
+        super(props, 2);
+    }
 
-    render()
+    #GetQuote()
+    {
+
+    }
+
+    #OpenWiki()
+    {
+
+    }
+
+    #Tweet()
+    {
+
+    }
+
+
+    Load()
+    {
+        this._imageRefs[0].current.src = lineDivider;
+        this._imageRefs[1].current.src = lineDivider;
+        super._LoadAllImages();
+    }
+
+
+    page()
     {
         return (
                 <div id="quote">
-
-                    <div id="quote-content" className="center-horizontal">
-                        <h3>Quote</h3>
-                        <img className="divider" alt="line divider" src = { lineDivider }></img>
+                    <div className="title-card center-horizontal">
+                        <img className="line-divider" alt="" ref={ this._imageRefs[0] } />
                         <blockquote>
-                            A man’s true wealth is the good he does in the world.       
+                            <q><p>A man’s true wealth is the good he does in the world.</p></q>       
                         </blockquote>
-                        <div id="author">Kahlil Gibran</div>
-                    </div>
-                    <ButtonContainer
-                            align="right"
+                        <div id="author"><h2>Kahlil Gibran</h2></div>
+                        <ButtonContainer
+                            align="center"
                         >
                             <MyFab
                                 tooltip="Open Wiki Page"
@@ -44,6 +70,10 @@ export default class Quote extends React.Component
                                 <FontAwesomeIcon icon={faClipboard} />
                             </MyFab>
                         </ButtonContainer>
+                        <p id="copyright">MMXXIII © Metro-Goldwin Mayer</p>
+                        <img className="line-divider flipped-y" alt="" ref={ this._imageRefs[1] }/>
+                    </div>
+
                 </div>
         );
     };

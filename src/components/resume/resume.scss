@@ -1,0 +1,21 @@
+#resume .line-divider.variant-2
+{
+    object-fit: cover;
+}
+
+.line-divider
+{
+    user-select: none;
+}
+
+
+.resume-card
+{
+    padding-bottom: 1rem;
+}
+
+.resume-card p
+{
+    text-align: justify;
+    // text-align: left;;
+}

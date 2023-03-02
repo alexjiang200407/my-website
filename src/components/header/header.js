@@ -1,10 +1,9 @@
 import React from "react";
-import { AppBar, Toolbar, Tooltip } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
 import "./header.scss"
 import LinkList from "../link_list/link_list";
-import { NavLink } from "react-router-dom";
 
 export default class Header extends React.Component
 {
@@ -31,29 +30,19 @@ export default class Header extends React.Component
                         >
                         <MenuIcon />
                     </IconButton>
-                    <Tooltip
-                        title="Go Home"
-                        enterDelay={750}
-                        placement="right"
-                        aria-label="logo"
-                    >
-                        <NavLink
-                            to={"/"}  
-                            id="logo"  
-                        >
-                            <span id="signature">
-                                    Alex Jiang
-                            </span>
-                            <span>
-                                .com
-                            </span>
-                        </NavLink>
-                    </Tooltip>
                     <LinkList 
                         links = {[
                             {
+                                title: "Home",
+                                to: "/"
+                            },
+                            {
                                 title: "Resume",
                                 to: "/resume"
+                            },
+                            {
+                                title: "Daily Quote",
+                                to: "/quote"
                             }
                         ]}
                     />

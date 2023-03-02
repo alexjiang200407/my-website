@@ -3,25 +3,21 @@
 #quote
 {
     padding: 0.8rem;
-    visibility: hidden;
 }
 
-#quote-content blockquote
+#quote blockquote
 {
     text-align: center;
     margin: 0;
     padding: 0;
 }
+#quote blockquote p
+{
+    display: inline;
+}
 
 #quote-content
 {
     gap: 0.5rem;
-}
-
-#quote .divider
-{
-    width: 12rem;
-    padding: 1rem 0;
-    user-select: none;
 }
 

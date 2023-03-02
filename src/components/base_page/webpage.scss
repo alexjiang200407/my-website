@@ -4,9 +4,9 @@
 
 #loading-screen
 {
+  width: 100%;
+  height: 100%;
   position: fixed;
-  top: calc(50% - 68px);
-  left: calc(50% - 68px);
   animation: animations.$fade-in;
 }
 
@@ -23,12 +23,39 @@
 main
 {
   width: 100%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  animation: horizontal-shake 0.1s ease infinite;
+
 }
+
 
 .webpage > *
 {
   animation: animations.$fade-in;
+  min-width: 50%;
+  @media (min-width: map-get(index.$screen-width, "desktop")) {
+    max-width: 60%;
+  }
 }
+
+.title-card
+{
+  gap: 1rem;
+  padding: 2rem 1rem;
+  overflow: visible;
+  text-align: center;
+  // border: 0.3rem double index.$text-color;
+}
+
+.title-card div{
+  width: 80%;
+}
+
 
 @keyframes spin 
 {
@@ -46,4 +73,12 @@ main
 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes horizontal-shake {
+  0% { transform: translateX(0) }
+  25% { transform: translateX(0.025rem) }
+  50% { transform: translateX(-0.025rem) }
+  75% { transform: translateX(0.025rem) }
+  100% { transform: translateX(0) }
 }

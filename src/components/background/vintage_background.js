@@ -1,7 +1,6 @@
 import React, { createRef } from "react"
 import "./vintage_background.scss";
 import dust from "../../images/dust_2.png";
-import lines from "../../images/lines.webp"
 import Bencher from "../../scripts/bencher/bencher";
 
 export default class VintageBackground extends React.Component
@@ -19,8 +18,7 @@ export default class VintageBackground extends React.Component
     #columnHeight = 0;
     #dustOverlay;
     #dustPattern;
-    #lineOverlay;
-    #linePattern;
+    #scratchIndex = 0;
     #bencher = new Bencher(100, "DrawScratches()");
     
 
@@ -36,7 +34,6 @@ export default class VintageBackground extends React.Component
         super(props)
         this.#canvasRef = createRef(null);
         this.#dustOverlay = createRef(null);
-        this.#lineOverlay = createRef(null);
     }
 
     // Clears the fucking background
@@ -109,24 +106,12 @@ export default class VintageBackground extends React.Component
 
     }
 
-    #DrawLines()
-    {
-        let xPos = this.#RandomNum(0, this.screenWidth);
-        this.#ctx.fillStyle = this.#linePattern;
-        if ((xPos % 4) == 1)
-        {
-            console.log("Draw");
-            this.#ctx.fillRect(xPos, 0, this.#rowWidth, this.#columnHeight);
-        };
-    }
-
     // Does this shit every frame
     #DoFrame()
     {
         this.#bencher.Start();
         this.Clear();
         this.#DrawScratches();
-        // this.#DrawLines();
         this.#bencher.End();
     };
 
@@ -139,17 +124,7 @@ export default class VintageBackground extends React.Component
                 this.#dustPattern = this.#ctx.createPattern(this.#dustOverlay.current, "repeat");
                 resolve();
             })
-        })
-        // Load image 2
-        .then(
-            new Promise((resolve, reject) => {
-                this.#lineOverlay.current.addEventListener("load", () => {
-                    this.#dustPattern = this.#ctx.createPattern(this.#lineOverlay.current, "repeat");
-                    resolve();
-                })
-            })  
-        );
-
+        });
     }
 
     componentDidMount()
@@ -191,11 +166,21 @@ export default class VintageBackground extends React.Component
                 />
                 <div className="vignette"></div>
                 <div className="grain"></div>
-                <div className="outer-scratch"></div>
-                <div className="inner-scratch"></div>
+                <div className="film-scratch scratch-1">
+                    <div></div>
+                </div>
+                <div 
+                    className="film-scratch scratch-2" 
+                    // Simply plays the next animation
+                    onAnimationEnd = {(e) => {
+                        this.#scratchIndex = (this.#scratchIndex + 1) % 7
+                        e.target.style.animation = `scratch-${ this.#scratchIndex } 2s ease ${ this.#scratchIndex }s`;
+                    }}
+                >
+                    <div></div>
+                </div>
                 <div style={{ display: "none" }}>
-                    <img src = { lines } ref={ this.#lineOverlay }></img>
-                    <img src = { dust } ref={ this.#dustOverlay }></img>
+                    <img src = { dust } ref={ this.#dustOverlay } alt="dust and scratches"></img>
                 </div>
             </div>
 

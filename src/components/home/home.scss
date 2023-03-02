@@ -1,0 +1,27 @@
+@use "../../index";
+#about
+{
+    user-select: none;
+    text-align: center;
+    overflow: visible;
+}
+
+#about .title-card
+{
+    gap: 1rem;
+    padding: 2rem 1rem;
+    overflow: visible;
+    // border: 0.3rem double index.$text-color;
+}
+
+
+#about-description
+{
+    text-align: center;
+}
+
+#copyright
+{
+    text-align: center;
+    font-size: 0.75rem;
+}

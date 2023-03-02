@@ -1,31 +1,42 @@
-import React from "react";
-import Quote from "../quote/quote";
+import React, { createRef } from "react";
 import WebPage from "../base_page/webpage";
-import About from "../about/about";
-
+import lineDivider from "../../images/line_divider.svg"
+import "./home.scss"
 
 export default class Home extends WebPage
 {
-
-    componentDidMount()
+    constructor(props)
     {
-        setTimeout(
-            () => {
-                this.setState({finishedLoading: true});
-            },
-            500
-        );
-    };
+        super(props, 2);
+    }
+
+
+    
+    // Loads all images
+    Load()
+    {
+        // console.log("Home Load")
+        this._imageRefs[0].current.src = lineDivider;
+        this._imageRefs[1].current.src = lineDivider;
+        super._LoadAllImages();
+    }
 
     page()
     {
         return (
-            <div>
+            <div id="about">
+                <div className="title-card center-horizontal">
+                    <img className="line-divider" alt="" ref={ this._imageRefs[0] } />
+                    <h3>Alex Jiang</h3>
+                    <h2>Presents</h2>
+                    <h1><q>His Life</q></h1>
+                    <p id="about-description">The tale of an eighteen year-old programmer from Sydney, Australia.</p>
+                    <p id="copyright">MMXXIII © Metro-Goldwin Mayer</p>
+                    <img className="line-divider flipped-y" alt="" ref={ this._imageRefs[1] }/>
+                </div>
 
-                <About />
-                <Quote />
             </div>
-
         );
     };
 };
+
