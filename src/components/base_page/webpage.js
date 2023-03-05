@@ -46,13 +46,13 @@ export default class WebPage extends React.Component
     }
 
     // After this function ends, removes loading screen
-    // must return a promise 
     Load()
     {
         console.log("Webpage Load")
     };
 
     // Sets the state
+    // Slight delay
     _LoadingComplete()
     {
         setTimeout(

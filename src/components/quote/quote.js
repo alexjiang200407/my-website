@@ -7,6 +7,7 @@ import "./quote.scss";
 import lineDivider from "../../images/line_divider.svg"
 import ButtonContainer from "../buttons/buttonContainer";
 import WebPage from "../base_page/webpage";
+import getRandomInt from "../../scripts/rng/rng";
 
 
 export default class Quote extends WebPage
@@ -19,7 +20,18 @@ export default class Quote extends WebPage
 
     #GetQuote()
     {
-
+        // return new Promise((resolve, reject) => {
+        //     fetch("./quotes_list.json")
+        //     .then((res) => { return JSON.parse(JSON.stringify(res); })
+        //     .then(
+        //         (quotes) => {
+        //             let randomNum = getRandomInt(0, quotes.length + 1);
+        //             console.log(randomNum);
+        //             return randomNum;
+        //         }
+        //     )
+        //     .then(resolve)
+        // });
     }
 
     #OpenWiki()
@@ -37,7 +49,10 @@ export default class Quote extends WebPage
     {
         this._imageRefs[0].current.src = lineDivider;
         this._imageRefs[1].current.src = lineDivider;
-        super._LoadAllImages();
+        super._LoadAllImages()
+        .then(
+            this.#GetQuote
+        );
     }
 
 

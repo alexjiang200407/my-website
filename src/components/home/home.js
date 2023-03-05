@@ -8,14 +8,11 @@ export default class Home extends WebPage
     constructor(props)
     {
         super(props, 2);
-    }
-
-
+    };
     
     // Loads all images
     Load()
     {
-        // console.log("Home Load")
         this._imageRefs[0].current.src = lineDivider;
         this._imageRefs[1].current.src = lineDivider;
         super._LoadAllImages();
@@ -34,7 +31,6 @@ export default class Home extends WebPage
                     <p id="copyright">MMXXIII © Metro-Goldwin Mayer</p>
                     <img className="line-divider flipped-y" alt="" ref={ this._imageRefs[1] }/>
                 </div>
-
             </div>
         );
     };
