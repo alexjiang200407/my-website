@@ -2,6 +2,7 @@
 
 #quote
 {
+    user-select: none;
     padding: 0.8rem;
 }
 
@@ -13,6 +14,7 @@
 }
 #quote blockquote p
 {
+    text-align: justify;
     display: inline;
 }
 

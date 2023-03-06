@@ -7,9 +7,13 @@ import Home from "./components/home/home";
 import VintageBackground from "./components/background/vintage_background";
 import Resume from "./components/resume/resume";
 import Quote from "./components/quote/quote";
+import { Snackbar } from "@mui/material";
+import BetterSnackBar from "./components/snackbar/snackbar";
 
 export default class App extends React.Component
 {
+    snackbar = <BetterSnackBar />;
+
     render() {
         return (
             <div
@@ -20,7 +24,7 @@ export default class App extends React.Component
                         <Header />
 
                         <VintageBackground />
-
+                        { this.snackbar }
                         <Routes>
                             <Route 
                                 element = {<Home />}
@@ -34,6 +38,8 @@ export default class App extends React.Component
                                 element = {<Quote />}
                                 path = "/quote"
                             />
+
+
                         </Routes>
                     </BrowserRouter>
                 </ThemeProvider> 

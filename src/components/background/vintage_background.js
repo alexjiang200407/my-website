@@ -127,6 +127,24 @@ export default class VintageBackground extends React.Component
         });
     }
 
+    #handleResize(e)
+    {
+        // this.screenWidth = this.#canvas.clientWidth;
+        // this.screenHeight = this.#canvas.clientHeight;
+        // this.#rowWidth = Math.floor(this.screenWidth / VintageBackground.rows);
+        // this.#columnHeight = Math.floor(this.screenHeight / VintageBackground.columns);
+        // this.#dustPattern = this.#ctx.createPattern(this.#dustOverlay.current, "repeat");
+        this.Clear();
+        this.#canvasRef.current.width = this.#canvas.clientWidth;
+        this.#canvasRef.current.height = this.#canvas.clientHeight;
+        this.screenWidth = this.#canvas.clientWidth;
+        this.screenHeight = this.#canvas.clientHeight;
+
+        this.#rowWidth = Math.floor(this.screenWidth / VintageBackground.rows);
+        this.#columnHeight = Math.floor(this.screenHeight / VintageBackground.columns);
+
+    }
+
     componentDidMount()
     {
         this.#canvas = this.#canvasRef.current;
@@ -139,6 +157,8 @@ export default class VintageBackground extends React.Component
         this.#rowWidth = Math.floor(this.screenWidth / VintageBackground.rows);
         this.#columnHeight = Math.floor(this.screenHeight / VintageBackground.columns);
 
+        window.addEventListener("resize", this.#handleResize.bind(this));
+
         // Load images then start painting the screen
         this.#LoadImages()
         .then(
@@ -150,6 +170,11 @@ export default class VintageBackground extends React.Component
             }
         );
     };
+
+    componentWillUnmount()
+    {
+        window.removeEventListener("resize", this.#handleResize.bind(this));
+    }
 
 
 
@@ -179,7 +204,7 @@ export default class VintageBackground extends React.Component
                 >
                     <div></div>
                 </div>
-                <div style={{ display: "none" }}>
+                <div id="dust" style={{ display: "none" }}>
                     <img src = { dust } ref={ this.#dustOverlay } alt="dust and scratches"></img>
                 </div>
             </div>
