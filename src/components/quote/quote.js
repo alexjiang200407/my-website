@@ -45,10 +45,7 @@ export default class Quote extends WebPage
     #CopyToClipBoard()
     {
 
-        navigator.clipboard.writeText(`${ this.state.quote.the_quote } - ${ this.state.quote.quote_author }`)
-        .then(() => {
-            // new BetterSnackBar;
-        });
+        navigator.clipboard.writeText(`${ this.state.quote.the_quote } - ${ this.state.quote.quote_author }`);
         
     }
 

@@ -12,7 +12,7 @@ import BetterSnackBar from "./components/snackbar/snackbar";
 
 export default class App extends React.Component
 {
-    snackbar = <BetterSnackBar />;
+
 
     render() {
         return (
@@ -24,7 +24,6 @@ export default class App extends React.Component
                         <Header />
 
                         <VintageBackground />
-                        { this.snackbar }
                         <Routes>
                             <Route 
                                 element = {<Home />}
