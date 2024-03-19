@@ -3,14 +3,11 @@ import MyFab from "../buttons/fab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClipboard } from "@fortawesome/free-regular-svg-icons"
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faWikipediaW } from "@fortawesome/fontawesome-free-brands"
+import { faTwitter } from "@fortawesome/fontawesome-free-brands"
 import "./quote.scss";
 import lineDivider from "../../images/line_divider.svg"
 import ButtonContainer from "../buttons/buttonContainer";
 import WebPage from "../base_page/webpage";
-import getRandomInt from "../../scripts/rng/rng";
-import BetterSnackBar from "../snackbar/snackbar";
-
 
 export default class Quote extends WebPage
 {
@@ -27,19 +24,16 @@ export default class Quote extends WebPage
         };
     }
 
-    #GetQuote()
-    {
-        let randomNum = getRandomInt(0, this.#file.length - 1);
-        this.setState({ quote: this.#file[randomNum] });
-        console.log(this.state)
-        
-        // console.log(randomNum);
-        // return randomNum;
+    #GetRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    #OpenWiki()
+    #GetQuote()
     {
-
+        let randomNum = this.#GetRandomInt(0, this.#file.length - 1);
+        this.setState({ quote: this.#file[randomNum] });
     }
 
     #CopyToClipBoard()
@@ -78,11 +72,6 @@ export default class Quote extends WebPage
                         <ButtonContainer
                             align="center"
                         >
-                            <MyFab
-                                tooltip="Open Wiki Page"
-                            >
-                                <FontAwesomeIcon icon={ faWikipediaW } />
-                            </MyFab>
                             <MyFab
                                 tooltip="Refresh Quote"
                                 onClick={ this.#GetQuote.bind(this) }

@@ -1,7 +1,6 @@
 import React, { createRef } from "react"
 import "./vintage_background.scss";
 import dust from "../../images/dust_2.png";
-import Bencher from "../../scripts/bencher/bencher";
 
 export default class VintageBackground extends React.Component
 {
@@ -19,8 +18,7 @@ export default class VintageBackground extends React.Component
     #dustOverlay;
     #dustPattern;
     #scratchIndex = 0;
-    #bencher = new Bencher(100, "DrawScratches()");
-    
+   
 
     // Public Interface
     screenWidth = 0;
@@ -109,10 +107,8 @@ export default class VintageBackground extends React.Component
     // Does this shit every frame
     #DoFrame()
     {
-        this.#bencher.Start();
         this.Clear();
         this.#DrawScratches();
-        this.#bencher.End();
     };
 
 

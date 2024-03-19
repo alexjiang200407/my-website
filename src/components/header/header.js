@@ -1,7 +1,5 @@
 import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from '@mui/icons-material/Menu';
 import "./header.scss"
 import LinkList from "../link_list/link_list";
 
@@ -20,16 +18,6 @@ export default class Header extends React.Component
                 }}
             >          
                 <Toolbar>            
-                    <IconButton
-                            id="menu"
-                            size="medium"
-                            color="text"
-                            edge="start"
-                            aria-label="open-drawer"
-                            sx={{ mr: 2 }}
-                        >
-                        <MenuIcon />
-                    </IconButton>
                     <LinkList 
                         links = {[
                             {

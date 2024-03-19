@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 import WebPage from "../base_page/webpage";
 import lineDivider from "../../images/line_divider.svg"
 import "./home.scss"
@@ -26,8 +26,8 @@ export default class Home extends WebPage
                     <img className="line-divider" alt="" ref={ this._imageRefs[0] } />
                     <h3>Alex Jiang</h3>
                     <h2>Presents</h2>
-                    <h1><q>His Life</q></h1>
-                    <p id="about-description">The tale of an eighteen year-old programmer from Sydney, Australia.</p>
+                    <h1><q>Resume</q></h1>
+                    <p id="about-description">The tale of a young software developer from Sydney, Australia.</p>
                     <p id="copyright">MMXXIII © Metro-Goldwin Mayer</p>
                     <img className="line-divider flipped-y" alt="" ref={ this._imageRefs[1] }/>
                 </div>

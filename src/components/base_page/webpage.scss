@@ -49,7 +49,6 @@ main
   padding: 2rem 1rem;
   overflow: visible;
   text-align: center;
-  // border: 0.3rem double index.$text-color;
 }
 
 .title-card div{
@@ -77,8 +76,8 @@ main
 
 @keyframes horizontal-shake {
   0% { transform: translateX(0) }
-  25% { transform: translateX(0.025rem) }
-  50% { transform: translateX(-0.025rem) }
-  75% { transform: translateX(0.025rem) }
+  25% { transform: translateX(0.0175rem) }
+  50% { transform: translateX(-0.0175rem) }
+  75% { transform: translateX(0.0175rem) }
   100% { transform: translateX(0) }
 }

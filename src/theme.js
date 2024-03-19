@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles"
-import index from "../index.scss"
+import index from "./index.scss"
 
 
 // Theme for my website
