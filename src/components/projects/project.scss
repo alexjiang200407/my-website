@@ -1,0 +1,17 @@
+@use "../../index";
+@use "../../animations";
+
+#projects img
+{
+    height: 100px;
+    width: 100px;
+}
+#projects
+{
+    animation: fade-in 0.4s ease-in;
+}
+
+#projects .link-list li
+{
+    text-align: center;
+}

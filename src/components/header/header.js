@@ -25,13 +25,17 @@ export default class Header extends React.Component
                                 to: "/"
                             },
                             {
-                                title: "Resume",
-                                to: "/resume"
+                                title: "About",
+                                to: "/about"
                             },
-                            {
-                                title: "Daily Quote",
-                                to: "/quote"
-                            }
+							{
+                                title: "Skills",
+                                to: "/skills"
+                            },
+							{
+                                title: "Portfolio",
+                                to: "/projects"
+                            },
                         ]}
                     />
                 </Toolbar>

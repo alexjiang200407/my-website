@@ -7,16 +7,18 @@ export default class LinkList extends React.Component
 
     #CreateLinks()
     {
-        let returnNodes = [];
+		let returnNodes = [];
         let key = 0;
         for (const link of this.props.links)
-        {
+		{
             returnNodes.push(
                 <li
                     key = { key }
                 >
                     <NavLink
                         to = { link.to }
+						target={ link.openToNew ? "_blank" : undefined }
+						rel={ link.openToNew ? "noopener noreferrer" : undefined }
                     >
                         { link.title }
                     </NavLink>

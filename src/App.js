@@ -5,8 +5,9 @@ import { ThemeProvider } from "@emotion/react";
 import Header from "./components/header/header";
 import Home from "./components/home/home";
 import VintageBackground from "./components/background/vintage_background";
-import Resume from "./components/resume/resume";
-import Quote from "./components/quote/quote";
+import About from "./components/about/about";
+import Skills from "./components/skills/Skills";
+import Projects from "./components/projects/Projects";
 
 export default class App extends React.Component
 {
@@ -28,15 +29,17 @@ export default class App extends React.Component
                                 path = "/"
                             />
                             <Route 
-                                element = {<Resume />}
-                                path = "/resume"
+                                element = {<About />}
+                                path = "/about"
                             />
                             <Route 
-                                element = {<Quote />}
-                                path = "/quote"
+                                element = {<Skills />}
+                                path = "/skills"
                             />
-
-
+							<Route 
+                                element = {<Projects />}
+                                path = "/projects"
+                            />
                         </Routes>
                     </BrowserRouter>
                 </ThemeProvider> 

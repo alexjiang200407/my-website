@@ -4,6 +4,7 @@ export interface LinkProps
 {
     to: string,
     title: string
+    openToNew?: boolean
 }
 
 export interface LinkListProps
